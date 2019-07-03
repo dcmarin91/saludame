@@ -9,10 +9,15 @@ app.get('/',(req,res) =>{
     res.send(`<h1>Hola ${name}!</h1>`)
 })
 
-app.post("/users", (req,res)=>{
-    res.status(404);
-    res.set("Content-Type","text/plain");
-    res.send("No se encontro el recurso")
+app.get('/makers/:name',(req,res)=>{
+    let name=req.params.name;
+    //console.log(name[0]);
+    if(name[0]===name[0].toLowerCase()){
+        name = name.replace(name[0],name[0].toUpperCase())
+        //name[0]=name[0].toUpperCase();
+        console.log(name);
+    }
+    res.send(`<h1>Hola ${name}</h1>`)
 })
 
 app.listen(3000,()=> console.log("Listening on port 3000"))
